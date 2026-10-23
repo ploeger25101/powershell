@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Headless simulation runner: balancing runs, load tests and network/persistence scenarios without the game. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>ProjectAbyss.Headless</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ProjectAbyss.Core\ProjectAbyss.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\content\data\*.json" Link="data\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

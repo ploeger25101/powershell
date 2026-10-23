@@ -1,0 +1,166 @@
+[
+  {
+    "id": "forest_ghoul",
+    "name": "Moderghul",
+    "biome": 1,
+    "role": "melee",
+    "maxHp": 45,
+    "armor": 5,
+    "moveSpeed": 62,
+    "radius": 7,
+    "reactionSeconds": 0.4,
+    "spawnCost": 1,
+    "xp": 8,
+    "goldMin": 3,
+    "goldMax": 7,
+    "sprite": "enemies/forest_ghoul",
+    "attacks": [
+      {
+        "id": "claw",
+        "shape": "sector",
+        "range": 24,
+        "halfAngleDegrees": 55,
+        "windupSeconds": 0.45,
+        "activeSeconds": 0.1,
+        "recoverySeconds": 0.5,
+        "damage": 12,
+        "useRange": 20,
+        "cooldownSeconds": 0.6,
+        "telegraphed": true,
+        "moveSpeedMultiplier": 0
+      }
+    ],
+    "statusResistances": {
+      "poison": 0.3
+    }
+  },
+  {
+    "id": "forest_thorn_archer",
+    "name": "Dornenschütze",
+    "biome": 1,
+    "role": "ranged",
+    "maxHp": 30,
+    "armor": 0,
+    "moveSpeed": 55,
+    "radius": 6,
+    "preferredRange": 110,
+    "reactionSeconds": 0.5,
+    "spawnCost": 1.25,
+    "xp": 10,
+    "goldMin": 4,
+    "goldMax": 8,
+    "sprite": "enemies/forest_thorn_archer",
+    "attacks": [
+      {
+        "id": "thorn_shot",
+        "shape": "projectile",
+        "windupSeconds": 0.6,
+        "activeSeconds": 0.05,
+        "recoverySeconds": 0.6,
+        "damage": 10,
+        "useRange": 180,
+        "cooldownSeconds": 1.2,
+        "telegraphed": true,
+        "moveSpeedMultiplier": 0,
+        "projectile": {
+          "speed": 170,
+          "radius": 3,
+          "lifetimeSeconds": 1.6
+        }
+      }
+    ]
+  },
+  {
+    "id": "forest_rot_shaman",
+    "name": "Fäulnisschamane",
+    "biome": 1,
+    "role": "support",
+    "maxHp": 38,
+    "armor": 2,
+    "moveSpeed": 50,
+    "radius": 7,
+    "preferredRange": 130,
+    "reactionSeconds": 0.6,
+    "spawnCost": 1.75,
+    "xp": 14,
+    "goldMin": 5,
+    "goldMax": 10,
+    "fleeHpFraction": 0.25,
+    "sprite": "enemies/forest_rot_shaman",
+    "attacks": [
+      {
+        "id": "mend",
+        "shape": "none",
+        "range": 48,
+        "windupSeconds": 0.8,
+        "activeSeconds": 0.05,
+        "recoverySeconds": 0.5,
+        "damage": 0,
+        "allyHeal": 18,
+        "useRange": 140,
+        "cooldownSeconds": 4,
+        "telegraphed": true
+      },
+      {
+        "id": "rot_bolt",
+        "shape": "projectile",
+        "windupSeconds": 0.7,
+        "activeSeconds": 0.05,
+        "recoverySeconds": 0.7,
+        "damage": 8,
+        "damageType": "poison",
+        "useRange": 170,
+        "cooldownSeconds": 2.5,
+        "telegraphed": true,
+        "projectile": {
+          "speed": 120,
+          "radius": 4,
+          "lifetimeSeconds": 2
+        },
+        "statuses": [
+          {
+            "type": "poison",
+            "chance": 1,
+            "durationSeconds": 3,
+            "potency": 3
+          }
+        ]
+      }
+    ],
+    "resistances": {
+      "poison": 0.5
+    }
+  },
+  {
+    "id": "forest_sprout",
+    "name": "Dornenspross",
+    "biome": 1,
+    "role": "melee",
+    "maxHp": 14,
+    "armor": 0,
+    "moveSpeed": 70,
+    "radius": 5,
+    "reactionSeconds": 0.4,
+    "spawnCost": 0.25,
+    "xp": 2,
+    "goldMin": 0,
+    "goldMax": 1,
+    "sprite": "enemies/forest_sprout",
+    "attacks": [
+      {
+        "id": "prick",
+        "shape": "sector",
+        "range": 18,
+        "halfAngleDegrees": 50,
+        "windupSeconds": 0.4,
+        "activeSeconds": 0.08,
+        "recoverySeconds": 0.5,
+        "damage": 6,
+        "useRange": 14,
+        "cooldownSeconds": 0.5,
+        "telegraphed": true,
+        "moveSpeedMultiplier": 0
+      }
+    ]
+  }
+]

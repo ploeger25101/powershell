@@ -1,0 +1,88 @@
+[
+  {
+    "id": "warrior_whirlwind",
+    "name": "Wirbelsturm",
+    "description": "Dreht sich mit der Waffe und trifft alle Gegner in der Nähe.",
+    "classId": "warrior",
+    "cooldownSeconds": 8,
+    "resourceCost": 0,
+    "omnidirectional": true,
+    "animation": "whirlwind",
+    "attack": {
+      "id": "whirlwind",
+      "shape": "circle",
+      "range": 44,
+      "windupSeconds": 0.1,
+      "activeSeconds": 0.4,
+      "recoverySeconds": 0.2,
+      "damage": 24,
+      "knockback": 8,
+      "moveSpeedMultiplier": 0.8
+    }
+  },
+  {
+    "id": "warrior_shield_charge",
+    "name": "Schildansturm",
+    "description": "Stürmt vorwärts, betäubt und stößt Gegner zurück.",
+    "classId": "warrior",
+    "cooldownSeconds": 10,
+    "resourceCost": 25,
+    "animation": "charge",
+    "attack": {
+      "id": "shield_charge",
+      "shape": "capsule",
+      "range": 20,
+      "width": 22,
+      "lungeDistance": 80,
+      "windupSeconds": 0.1,
+      "activeSeconds": 0.25,
+      "recoverySeconds": 0.25,
+      "damage": 18,
+      "knockback": 30,
+      "staggerDamage": 50,
+      "moveSpeedMultiplier": 0,
+      "statuses": [
+        {
+          "type": "stun",
+          "chance": 1,
+          "durationSeconds": 0.8
+        }
+      ]
+    }
+  },
+  {
+    "id": "warrior_battle_cry",
+    "name": "Schlachtruf",
+    "description": "Betäubt nahe Gegner kurz und stärkt Verbündete: +30 % Schaden, −20 % erlittener Schaden für 8 s.",
+    "classId": "warrior",
+    "isUltimate": true,
+    "cooldownSeconds": 45,
+    "resourceCost": 60,
+    "omnidirectional": true,
+    "animation": "ultimate",
+    "attack": {
+      "id": "battle_cry",
+      "shape": "circle",
+      "range": 56,
+      "windupSeconds": 0.3,
+      "activeSeconds": 0.1,
+      "recoverySeconds": 0.3,
+      "damage": 20,
+      "moveSpeedMultiplier": 0,
+      "statuses": [
+        {
+          "type": "stun",
+          "chance": 1,
+          "durationSeconds": 0.6
+        }
+      ]
+    },
+    "selfBuff": {
+      "id": "battle_cry",
+      "durationSeconds": 8,
+      "damageMultiplier": 1.3,
+      "damageTakenMultiplier": 0.8,
+      "allyRadius": 120
+    }
+  }
+]

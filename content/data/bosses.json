@@ -1,0 +1,185 @@
+[
+  {
+    "id": "forest_warden",
+    "name": "Wächter des Waldes",
+    "biome": 1,
+    "maxHp": 1400,
+    "armor": 25,
+    "moveSpeed": 40,
+    "radius": 20,
+    "staggerMax": 300,
+    "staggerDurationSeconds": 3,
+    "staggerImmunitySeconds": 8,
+    "stunDiminishFactor": 0.5,
+    "arenaTemplate": "forest_boss_warden",
+    "pactAttack": "verdant_wrath",
+    "xp": 250,
+    "goldMin": 180,
+    "goldMax": 260,
+    "sprite": "bosses/forest_warden",
+    "phases": [
+      {
+        "startsAtHpFraction": 1.0,
+        "attackIntervalSeconds": 1.4,
+        "moveSpeedMultiplier": 1.0,
+        "attacks": [
+          "sweep",
+          "root_slam"
+        ],
+        "coopMinPlayers": 2,
+        "coopAttacks": [
+          "thorn_barrage"
+        ],
+        "music": "boss_forest_p1"
+      },
+      {
+        "startsAtHpFraction": 0.7,
+        "attackIntervalSeconds": 1.2,
+        "moveSpeedMultiplier": 1.1,
+        "attacks": [
+          "sweep",
+          "root_slam",
+          "thorn_ring",
+          "summon_sprouts"
+        ],
+        "coopMinPlayers": 2,
+        "coopAttacks": [
+          "thorn_barrage"
+        ],
+        "music": "boss_forest_p2"
+      },
+      {
+        "startsAtHpFraction": 0.35,
+        "attackIntervalSeconds": 0.9,
+        "moveSpeedMultiplier": 1.25,
+        "attacks": [
+          "sweep",
+          "root_slam",
+          "thorn_ring",
+          "summon_sprouts",
+          "charge"
+        ],
+        "coopMinPlayers": 2,
+        "coopAttacks": [
+          "thorn_barrage"
+        ],
+        "music": "boss_forest_p3"
+      }
+    ],
+    "attacks": [
+      {
+        "id": "sweep",
+        "shape": "sector",
+        "range": 64,
+        "halfAngleDegrees": 70,
+        "windupSeconds": 0.75,
+        "activeSeconds": 0.12,
+        "recoverySeconds": 0.6,
+        "damage": 22,
+        "useRange": 60,
+        "telegraphed": true,
+        "moveSpeedMultiplier": 0
+      },
+      {
+        "id": "root_slam",
+        "shape": "circle",
+        "targetGround": true,
+        "range": 36,
+        "windupSeconds": 1.0,
+        "activeSeconds": 0.12,
+        "recoverySeconds": 0.6,
+        "damage": 28,
+        "useRange": 320,
+        "cooldownSeconds": 2,
+        "telegraphed": true,
+        "moveSpeedMultiplier": 0,
+        "statuses": [
+          {
+            "type": "stun",
+            "chance": 0.5,
+            "durationSeconds": 0.5
+          }
+        ]
+      },
+      {
+        "id": "thorn_ring",
+        "shape": "projectile",
+        "windupSeconds": 0.8,
+        "activeSeconds": 0.05,
+        "recoverySeconds": 0.8,
+        "damage": 14,
+        "useRange": 400,
+        "cooldownSeconds": 5,
+        "telegraphed": true,
+        "moveSpeedMultiplier": 0,
+        "projectile": {
+          "speed": 110,
+          "radius": 4,
+          "lifetimeSeconds": 3,
+          "count": 14,
+          "spreadDegrees": 360
+        }
+      },
+      {
+        "id": "thorn_barrage",
+        "shape": "projectile",
+        "windupSeconds": 0.7,
+        "activeSeconds": 0.05,
+        "recoverySeconds": 0.6,
+        "damage": 12,
+        "useRange": 400,
+        "cooldownSeconds": 6,
+        "telegraphed": true,
+        "moveSpeedMultiplier": 0,
+        "projectile": {
+          "speed": 160,
+          "radius": 4,
+          "lifetimeSeconds": 2.5,
+          "count": 5,
+          "spreadDegrees": 50
+        }
+      },
+      {
+        "id": "summon_sprouts",
+        "shape": "none",
+        "windupSeconds": 1.0,
+        "activeSeconds": 0.05,
+        "recoverySeconds": 0.6,
+        "damage": 0,
+        "useRange": 400,
+        "cooldownSeconds": 12,
+        "telegraphed": true,
+        "summonEnemyId": "forest_sprout",
+        "summonCount": 3
+      },
+      {
+        "id": "charge",
+        "shape": "capsule",
+        "range": 10,
+        "width": 34,
+        "lungeDistance": 150,
+        "windupSeconds": 0.9,
+        "activeSeconds": 0.35,
+        "recoverySeconds": 0.9,
+        "damage": 30,
+        "useRange": 220,
+        "cooldownSeconds": 6,
+        "telegraphed": true,
+        "moveSpeedMultiplier": 0
+      },
+      {
+        "id": "verdant_wrath",
+        "shape": "circle",
+        "range": 90,
+        "windupSeconds": 1.4,
+        "activeSeconds": 0.15,
+        "recoverySeconds": 0.8,
+        "damage": 40,
+        "useRange": 400,
+        "cooldownSeconds": 14,
+        "telegraphed": true,
+        "moveSpeedMultiplier": 0
+      }
+    ]
+  }
+]

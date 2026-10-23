@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "dash": {
+    "charges": 2,
+    "rechargeSeconds": 3.0,
+    "durationSeconds": 0.22,
+    "invulnerableSeconds": 0.14,
+    "distance": 64
+  },
+  "lives": {
+    "startLives": 3,
+    "reviveWindowSeconds": 12,
+    "reviveChannelSeconds": 2.5,
+    "reviveRadius": 28,
+    "reviveHpFraction": 0.3,
+    "respawnHpFraction": 0.5,
+    "respawnInvulnerableSeconds": 2,
+    "pactLives": 1
+  },
+  "reconnect": {
+    "protectionSeconds": 2.0,
+    "timeoutSeconds": 6
+  },
+  "combat": {
+    "armorConstant": 100,
+    "maxArmorMitigation": 0.75,
+    "critMultiplier": 1.5,
+    "maxResistance": 0.75,
+    "minResistance": -1,
+    "statusTickSeconds": 0.5,
+    "playerHitInvulnerableSeconds": 0.25,
+    "stunDiminishWindowSeconds": 6,
+    "maxActiveProjectiles": 400
+  },
+  "scaling": {
+    "bossHp": [
+      1.0,
+      1.75,
+      2.5,
+      3.25
+    ],
+    "enemyBudget": [
+      1.0,
+      1.5,
+      2.0,
+      2.5
+    ],
+    "enemyHp": [
+      1.0,
+      1.1,
+      1.2,
+      1.3
+    ],
+    "enemyDamage": [
+      1.0,
+      1.05,
+      1.1,
+      1.15
+    ],
+    "baseThreatBudget": 6,
+    "threatBudgetPerLevel": 1.25,
+    "difficulties": [
+      {
+        "id": "normal",
+        "name": "Normal",
+        "enemyHp": 1.0,
+        "enemyDamage": 1.0,
+        "budget": 1.0,
+        "eliteChance": 0.05,
+        "extraBossAbilities": 0
+      },
+      {
+        "id": "hard",
+        "name": "Schwer",
+        "enemyHp": 1.35,
+        "enemyDamage": 1.25,
+        "budget": 1.2,
+        "eliteChance": 0.1,
+        "extraBossAbilities": 1,
+        "unlockedBy": "normal"
+      },
+      {
+        "id": "nightmare",
+        "name": "Albtraum",
+        "enemyHp": 1.8,
+        "enemyDamage": 1.5,
+        "budget": 1.4,
+        "eliteChance": 0.16,
+        "extraBossAbilities": 2,
+        "unlockedBy": "hard"
+      },
+      {
+        "id": "hell",
+        "name": "Höllisch",
+        "enemyHp": 2.4,
+        "enemyDamage": 1.85,
+        "budget": 1.6,
+        "eliteChance": 0.22,
+        "extraBossAbilities": 3,
+        "unlockedBy": "nightmare"
+      }
+    ]
+  },
+  "potion": {
+    "startCharges": 2,
+    "maxCharges": 3,
+    "healFraction": 0.35,
+    "cooldownSeconds": 1
+  },
+  "progression": {
+    "maxLevel": 20,
+    "xpToNextLevel": [
+      100,
+      120,
+      140,
+      170,
+      210,
+      250,
+      300,
+      360,
+      430,
+      520,
+      620,
+      740,
+      890,
+      1070,
+      1280,
+      1540,
+      1850,
+      2220,
+      2660
+    ],
+    "skillPointsPerLevel": 1,
+    "skillPointsPerBossMilestone": 1
+  },
+  "economy": {
+    "sellPriceFraction": 0.25,
+    "upgradeGoldCost": [
+      100,
+      150,
+      220,
+      300,
+      380,
+      480,
+      600,
+      750,
+      950,
+      1300
+    ],
+    "skillResetBaseCost": 150,
+    "skillResetCostGrowth": 1.6,
+    "inventorySlots": 24,
+    "runChestSlots": 16
+  }
+}

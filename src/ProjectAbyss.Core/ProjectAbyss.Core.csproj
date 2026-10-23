@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Engine-independent game simulation. No reference to Stardew Valley, SMAPI or MonoGame. -->
+  <PropertyGroup>
+    <!-- Stardew Valley 1.6 / SMAPI 4.x run on .NET 6; Core must load inside the game process. -->
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>ProjectAbyss.Core</RootNamespace>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="ProjectAbyss.Core.Tests" />
+  </ItemGroup>
+</Project>

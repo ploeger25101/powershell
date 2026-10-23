@@ -1,0 +1,42 @@
+[
+  {
+    "id": "warrior",
+    "name": "Krieger",
+    "unlockedByDefault": true,
+    "maxHp": 140,
+    "armor": 20,
+    "moveSpeed": 92,
+    "radius": 7,
+    "critChance": 0.05,
+    "hpPerLevel": 7,
+    "armorPerLevel": 1.5,
+    "resource": {
+      "id": "resolve",
+      "name": "Entschlossenheit",
+      "max": 100,
+      "start": 0,
+      "regenPerSecond": 0,
+      "gainOnHitDealt": 3,
+      "gainOnDamageTaken": 5,
+      "gainOnDash": 0,
+      "decayPerSecond": 4,
+      "decayDelaySeconds": 5
+    },
+    "weaponTypes": [
+      "warrior_sword",
+      "warrior_axe",
+      "warrior_mace"
+    ],
+    "skillBranches": [
+      "guardian",
+      "weaponmaster",
+      "duelist"
+    ],
+    "starterAbilities": [
+      "warrior_whirlwind",
+      "warrior_shield_charge"
+    ],
+    "baseUltimate": "warrior_battle_cry",
+    "resistances": {}
+  }
+]

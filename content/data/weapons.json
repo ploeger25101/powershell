@@ -1,0 +1,125 @@
+[
+  {
+    "id": "warrior_sword",
+    "name": "Schwert",
+    "classId": "warrior",
+    "twoHanded": false,
+    "specialCooldownSeconds": 3,
+    "passiveDescription": "Ausgewogen. Spezialangriff: Parade mit Gegenstoß.",
+    "sound": "sword_swing",
+    "basic": {
+      "id": "sword_slash",
+      "shape": "sector",
+      "range": 30,
+      "halfAngleDegrees": 50,
+      "windupSeconds": 0.08,
+      "activeSeconds": 0.08,
+      "recoverySeconds": 0.18,
+      "damage": 14,
+      "moveSpeedMultiplier": 0.5
+    },
+    "special": {
+      "id": "sword_parry",
+      "shape": "none",
+      "windupSeconds": 0.03,
+      "activeSeconds": 0.35,
+      "recoverySeconds": 0.25,
+      "damage": 0,
+      "range": 30,
+      "parry": true,
+      "riposteDamage": 35,
+      "parryResourceGain": 15,
+      "staggerDamage": 40,
+      "moveSpeedMultiplier": 0.2
+    }
+  },
+  {
+    "id": "warrior_axe",
+    "name": "Axt",
+    "classId": "warrior",
+    "twoHanded": false,
+    "specialCooldownSeconds": 5,
+    "passiveDescription": "Treffer können Blutungen verursachen.",
+    "sound": "axe_swing",
+    "basic": {
+      "id": "axe_chop",
+      "shape": "sector",
+      "range": 32,
+      "halfAngleDegrees": 60,
+      "windupSeconds": 0.14,
+      "activeSeconds": 0.1,
+      "recoverySeconds": 0.26,
+      "damage": 19,
+      "moveSpeedMultiplier": 0.4,
+      "statuses": [
+        {
+          "type": "bleed",
+          "chance": 0.2,
+          "durationSeconds": 3,
+          "potency": 4
+        }
+      ]
+    },
+    "special": {
+      "id": "axe_cleave",
+      "shape": "sector",
+      "range": 44,
+      "halfAngleDegrees": 85,
+      "windupSeconds": 0.3,
+      "activeSeconds": 0.12,
+      "recoverySeconds": 0.35,
+      "damage": 30,
+      "knockback": 10,
+      "moveSpeedMultiplier": 0.2,
+      "statuses": [
+        {
+          "type": "bleed",
+          "chance": 1,
+          "durationSeconds": 4,
+          "potency": 6
+        }
+      ]
+    }
+  },
+  {
+    "id": "warrior_mace",
+    "name": "Streitkolben",
+    "classId": "warrior",
+    "twoHanded": false,
+    "specialCooldownSeconds": 6,
+    "passiveDescription": "Treffer bauen Boss-Stagger stark auf.",
+    "sound": "mace_swing",
+    "basic": {
+      "id": "mace_smash",
+      "shape": "sector",
+      "range": 28,
+      "halfAngleDegrees": 45,
+      "windupSeconds": 0.16,
+      "activeSeconds": 0.08,
+      "recoverySeconds": 0.3,
+      "damage": 21,
+      "staggerDamage": 15,
+      "knockback": 6,
+      "moveSpeedMultiplier": 0.4
+    },
+    "special": {
+      "id": "mace_quake",
+      "shape": "circle",
+      "offset": 24,
+      "range": 36,
+      "windupSeconds": 0.35,
+      "activeSeconds": 0.1,
+      "recoverySeconds": 0.4,
+      "damage": 26,
+      "staggerDamage": 60,
+      "moveSpeedMultiplier": 0.1,
+      "statuses": [
+        {
+          "type": "stun",
+          "chance": 1,
+          "durationSeconds": 1.0
+        }
+      ]
+    }
+  }
+]
