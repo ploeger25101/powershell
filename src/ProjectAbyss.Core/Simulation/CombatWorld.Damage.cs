@@ -125,7 +125,8 @@ namespace ProjectAbyss.Core.Simulation
                 xp = def.Xp * (enemy.IsElite ? 3 : 1);
                 gold = this.rng.NextInt(def.GoldMin, def.GoldMax + 1) * (enemy.IsElite ? 3 : 1);
             }
-            var e = this.EmitAt(SimEventType.EnemyKilled, enemy.Position, killerId, enemy.Id, key: enemy.DefId, flag: enemy.IsBoss);
+            // Amount carries the elite flag because the entity is removed at the end of the tick.
+            var e = this.EmitAt(SimEventType.EnemyKilled, enemy.Position, killerId, enemy.Id, enemy.IsElite ? 1f : 0f, enemy.DefId, enemy.IsBoss);
             e.IntValue = xp;
             e.IntValue2 = gold;
         }
