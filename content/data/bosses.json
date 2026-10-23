@@ -3,7 +3,7 @@
     "id": "forest_warden",
     "name": "Wächter des Waldes",
     "biome": 1,
-    "maxHp": 1400,
+    "maxHp": 4400,
     "armor": 25,
     "moveSpeed": 40,
     "radius": 20,
@@ -30,7 +30,7 @@
         "coopAttacks": [
           "thorn_barrage"
         ],
-        "music": "boss_forest_p1"
+        "music": "abyss_music_boss_forest_p1"
       },
       {
         "startsAtHpFraction": 0.7,
@@ -46,7 +46,7 @@
         "coopAttacks": [
           "thorn_barrage"
         ],
-        "music": "boss_forest_p2"
+        "music": "abyss_music_boss_forest_p2"
       },
       {
         "startsAtHpFraction": 0.35,
@@ -63,7 +63,7 @@
         "coopAttacks": [
           "thorn_barrage"
         ],
-        "music": "boss_forest_p3"
+        "music": "abyss_music_boss_forest_p3"
       }
     ],
     "attacks": [

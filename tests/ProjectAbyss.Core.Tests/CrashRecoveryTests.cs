@@ -152,6 +152,23 @@ namespace ProjectAbyss.Core.Tests
         }
 
         [Fact]
+        public void EveryLevelCanStartAnArenaEvenWithoutBiomeContent()
+        {
+            var data = TestData.Data;
+            for (int level = 1; level <= RunPlan.TotalLevels; level++)
+            {
+                var run = RunController.CreateRun(data, "lvl" + level, (ulong)level, "normal", new[] { ("a", "A", "warrior", "") }, developer: true);
+                run.CurrentLevel = level;
+                var c = new RunController(data, run, null);
+                var world = c.BeginArena();
+                for (int i = 0; i < 120; i++)
+                    c.Step(new Dictionary<int, PlayerInput>());
+                Assert.Equal(level, world.State.Level);
+                Assert.True(world.State.Enemies.Count > 0 || world.State.Encounter.Status != EncounterStatus.InProgress, $"level {level} has no enemies");
+            }
+        }
+
+        [Fact]
         public void SingleNoVoteEndsTheRun()
         {
             var data = TestData.Data;

@@ -31,12 +31,12 @@ namespace ProjectAbyss.Core.Simulation
 
         public EncounterState Build(EncounterKind kind, int biome, int level, string difficultyId, int playerCount, bool risk, DeterministicRng rng)
         {
-            var pool = this.data.Enemies.Values.Where(e => e.Biome == biome && !e.IsElite)
-                .Where(e => !this.IsSummonOnly(e.Id))
-                .OrderBy(e => e.Id, StringComparer.Ordinal)
-                .ToList();
+            var pool = this.PoolFor(biome);
+            // biomes without content yet fall back to the closest lower biome that has enemies
+            for (int b = biome - 1; pool.Count == 0 && b >= 1; b--)
+                pool = this.PoolFor(b);
             if (pool.Count == 0)
-                throw new InvalidOperationException($"No enemies defined for biome {biome}.");
+                throw new InvalidOperationException($"No enemies defined for biome {biome} or any lower biome.");
             float budget = this.ThreatBudget(level, difficultyId, playerCount, risk);
             var diff = this.data.Balance.Scaling.Difficulties.FirstOrDefault(d => d.Id == difficultyId) ?? this.data.Balance.Scaling.Difficulties[0];
             var enc = new EncounterState { Kind = kind, IsRiskArena = risk, ScalingPlayerCount = playerCount };
@@ -83,6 +83,12 @@ namespace ProjectAbyss.Core.Simulation
             }
             return enc;
         }
+
+        private List<EnemyDef> PoolFor(int biome) =>
+            this.data.Enemies.Values.Where(e => e.Biome == biome && !e.IsElite)
+                .Where(e => !this.IsSummonOnly(e.Id))
+                .OrderBy(e => e.Id, StringComparer.Ordinal)
+                .ToList();
 
         private bool IsSummonOnly(string enemyId) =>
             this.data.Enemies[enemyId].SpawnCost < 0.5f

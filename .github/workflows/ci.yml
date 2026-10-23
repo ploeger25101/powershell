@@ -1,0 +1,26 @@
+name: CI
+on:
+  push:
+  pull_request:
+jobs:
+  build-test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - run: dotnet build ProjectAbyss.sln -c Release
+      - run: dotnet test ProjectAbyss.sln -c Release --no-build
+      - name: Load test (4 players, 32 enemies)
+        run: dotnet run --project tools/ProjectAbyss.Headless -c Release --no-build -- load 32
+      - name: UI smoke test (MonoGame under Xvfb)
+        run: |
+          sudo apt-get update && sudo apt-get install -y xvfb libgl1-mesa-dri
+          cd tools/ProjectAbyss.Standalone
+          xvfb-run -a dotnet run -c Release --no-build -- --script scripts/smoke.json --out ../../artifacts/shots
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: screenshots
+          path: artifacts/shots

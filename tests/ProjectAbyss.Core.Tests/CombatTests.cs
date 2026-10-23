@@ -215,9 +215,9 @@ namespace ProjectAbyss.Core.Tests
                 w.Step();
                 return w.State.Enemies.Single(e => e.IsBoss).MaxHp;
             }
-            Assert.Equal(1400f, Hp(1), 1);
-            Assert.Equal(1400f * 1.75f, Hp(2), 1);
-            Assert.Equal(1400f * 3.25f, Hp(4), 1);
+            Assert.Equal(4400f, Hp(1), 1);
+            Assert.Equal(4400f * 1.75f, Hp(2), 1);
+            Assert.Equal(4400f * 3.25f, Hp(4), 1);
         }
 
         [Fact]

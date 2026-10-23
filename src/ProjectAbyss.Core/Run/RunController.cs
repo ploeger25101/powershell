@@ -213,9 +213,10 @@ namespace ProjectAbyss.Core.Run
                 {
                     bool boss = e.Flag;
                     bool elite = e.Amount > 0;
-                    foreach (var p in run.Participants)
+                    foreach (var p in run.Participants.Where(p => !p.Eliminated))
                     {
-                        // personal rewards for everyone in the run (eliminated players keep their state for later revival)
+                        // personal rewards for every participant still in the fight (connected or not);
+                        // eliminated players keep their state for a later revival but earn nothing meanwhile
                         var item = this.loot.RollDrop(run, this.lootRng, p, elite, boss, this.Blueprints.GetValueOrDefault(p.ParticipantId) ?? new HashSet<string>());
                         this.Ledger.Commit(new RunTransaction
                         {
