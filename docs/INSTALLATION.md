@@ -9,7 +9,7 @@
    Portweiterleitung). Mitspieler geben die IP unter „Beitreten“ ein.
 
 ## Entwickler
-Voraussetzungen: .NET SDK 6 oder neuer (getestet mit 8.0.132).
+Voraussetzungen: **.NET SDK 8** oder neuer (getestet mit 8.0.132). Das SDK 6 allein reicht nicht: Tests und Werkzeuge zielen auf net8.0; die Mod selbst und der Core laufen weiterhin auf .NET 6.
 ```bash
 dotnet build ProjectAbyss.sln       # ohne Stardew möglich
 dotnet test
