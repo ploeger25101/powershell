@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Development-only desktop host for the presentation layer: renders menus and combat with plain MonoGame so they can
+    be exercised, screenshotted and profiled without Stardew Valley (e.g. under Xvfb in CI). Not shipped to players;
+    the game itself is launched through Stardew Valley + SMAPI.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>ProjectAbyss.Standalone</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ProjectAbyss.Core\ProjectAbyss.Core.csproj" />
+    <ProjectReference Include="..\..\src\ProjectAbyss.Client\ProjectAbyss.Client.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\content\data\*.json" Link="data\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\src\ProjectAbyss.Smapi\assets\**\*" Link="assets\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="fonts\*" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="scripts\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

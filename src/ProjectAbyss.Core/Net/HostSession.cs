@@ -78,6 +78,9 @@ namespace ProjectAbyss.Core.Net
 
         public event Action<string>? Log;
 
+        /// <summary>Simulation events of the most recent tick (for the host's own presentation).</summary>
+        public IReadOnlyList<SimEvent> LastTickEvents { get; private set; } = Array.Empty<SimEvent>();
+
         public static string Sanitize(string name)
         {
             var clean = new string((name ?? "").Where(c => !char.IsControl(c)).ToArray()).Trim();
@@ -89,6 +92,18 @@ namespace ProjectAbyss.Core.Net
         // ---------------------------------------------------------------- lobby (host UI)
 
         public bool SetHostClass(string classId) => this.SetClass(this.HostParticipantId, classId);
+
+        public bool SetHostWeapon(string weaponTypeId) => this.SetWeapon(this.HostParticipantId, weaponTypeId);
+
+        private bool SetWeapon(string participantId, string weaponTypeId)
+        {
+            var m = this.Lobby.Members.Find(x => x.ParticipantId == participantId);
+            if (m == null || this.Lobby.RunStarted || !this.data.WeaponTypes.TryGetValue(weaponTypeId, out var w) || w.ClassId != m.ClassId)
+                return false;
+            m.WeaponTypeId = weaponTypeId;
+            this.BroadcastLobby();
+            return true;
+        }
 
         public bool SetDifficulty(string difficultyId)
         {
@@ -133,7 +148,8 @@ namespace ProjectAbyss.Core.Net
             return list;
         }
 
-        public RunController StartRun(ulong seed, bool developer)
+        /// <param name="developerStartLevel">Developer mode only: start directly at this level (e.g. a boss level).</param>
+        public RunController StartRun(ulong seed, bool developer, int developerStartLevel = 1)
         {
             var blockers = this.StartBlockers();
             if (blockers.Count > 0)
@@ -141,6 +157,8 @@ namespace ProjectAbyss.Core.Net
             string runId = Hashing.Sha256Hex(seed + ":" + DateTime.UtcNow.Ticks + ":" + this.HostParticipantId).Substring(0, 12);
             var run = RunController.CreateRun(this.data, runId, seed, this.Lobby.DifficultyId,
                 this.Lobby.Members.Select(m => (m.ParticipantId, m.DisplayName, m.ClassId, m.WeaponTypeId)), developer);
+            if (developer && developerStartLevel > 1)
+                run.CurrentLevel = Math.Min(RunPlan.TotalLevels, developerStartLevel);
             this.Controller = new RunController(this.data, run, this.storeFactory(run));
             this.Controller.Log += s => this.Log?.Invoke(s);
             this.Lobby.RunStarted = true;
@@ -181,6 +199,7 @@ namespace ProjectAbyss.Core.Net
         public void Tick()
         {
             this.sessionTick++;
+            this.LastTickEvents = Array.Empty<SimEvent>();
             this.PumpTransport();
             this.CheckTimeouts();
 
@@ -199,6 +218,7 @@ namespace ProjectAbyss.Core.Net
                 }
                 var world = c.World;
                 var events = c.Step(inputs);
+                this.LastTickEvents = events.ToList();
                 this.pendingEvents.AddRange(events);
                 if (c.Phase != RunPhase.InArena)
                 {
@@ -494,6 +514,8 @@ namespace ProjectAbyss.Core.Net
             {
                 case ClientAction.SetClass:
                     return this.SetClass(participantId, req.A) ? (true, "") : (false, "Klasse nicht verfügbar");
+                case ClientAction.SetWeapon:
+                    return this.SetWeapon(participantId, req.A) ? (true, "") : (false, "Waffe nicht verfügbar");
                 case ClientAction.SetReady:
                 {
                     var m = this.Lobby.Members.Find(x => x.ParticipantId == participantId);

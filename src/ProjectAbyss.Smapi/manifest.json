@@ -1,0 +1,10 @@
+{
+  "Name": "Project Abyss",
+  "Author": "Project Abyss Team",
+  "Version": "0.1.0",
+  "Description": "Ein eigenständiges Dark-Fantasy-Action-Roguelite, gestartet über Stardew Valley und SMAPI.",
+  "UniqueID": "ProjectAbyss.Game",
+  "EntryDll": "ProjectAbyss.dll",
+  "MinimumApiVersion": "4.0.0",
+  "UpdateKeys": []
+}

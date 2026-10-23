@@ -1,0 +1,23 @@
+[
+  { "frame": 20, "screenshot": "01_main_menu" },
+  { "frame": 25, "click": "Neuer Durchlauf" },
+  { "frame": 40, "screenshot": "02_new_run" },
+  { "frame": 45, "click": "Axt" },
+  { "frame": 50, "click": "Abstieg beginnen" },
+  { "frame": 130, "screenshot": "03_arena_start" },
+  { "frame": 131, "mouse": [1100, 450], "down": "D" },
+  { "frame": 200, "up": "D" },
+  { "frame": 200, "down": "MouseLeft" },
+  { "frame": 260, "screenshot": "04_combat" },
+  { "frame": 330, "down": "Q" },
+  { "frame": 334, "up": "Q" },
+  { "frame": 340, "screenshot": "05_ability" },
+  { "frame": 600, "screenshot": "06_combat_later" },
+  { "frame": 605, "up": "MouseLeft" },
+  { "frame": 610, "down": "Escape" },
+  { "frame": 612, "up": "Escape" },
+  { "frame": 620, "screenshot": "07_pause" },
+  { "frame": 625, "click": "Fortsetzen" },
+  { "frame": 1500, "screenshot": "08_late" },
+  { "frame": 1501, "quit": true }
+]

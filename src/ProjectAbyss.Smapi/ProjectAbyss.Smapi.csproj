@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    The SMAPI mod. Requires a local Stardew Valley 1.6.14+ installation with SMAPI 4.x: Pathoschild.Stardew.ModBuildConfig
+    finds the game folder, references the game's own assemblies (Stardew Valley, MonoGame.Framework, StardewModdingAPI)
+    and deploys the built mod into the game's Mods folder. This project is therefore not part of ProjectAbyss.sln,
+    which must build on machines (and CI) without the game.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>ProjectAbyss</AssemblyName>
+    <RootNamespace>ProjectAbyss.Smapi</RootNamespace>
+    <EnableHarmony>false</EnableHarmony>
+    <ModFolderName>ProjectAbyss</ModFolderName>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectAbyss.Core\ProjectAbyss.Core.csproj" />
+    <!-- presentation layer: same sources as ProjectAbyss.Client.csproj, compiled against the game's MonoGame -->
+    <Compile Include="..\ProjectAbyss.Client\**\*.cs" Exclude="..\ProjectAbyss.Client\obj\**;..\ProjectAbyss.Client\bin\**" Link="Client\%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\content\data\*.json" Link="data\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="assets\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

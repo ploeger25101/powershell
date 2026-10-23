@@ -141,6 +141,7 @@ namespace ProjectAbyss.Core.Net
         ContributeRevive = 10,
         StartRun = 11,
         ContinueToNextArena = 12,
+        SetWeapon = 13,
     }
 
     /// <summary>A request the host validates; <see cref="RequestId"/> makes retries idempotent per participant.</summary>

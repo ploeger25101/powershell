@@ -1,0 +1,170 @@
+{
+  "note": "Generated test assets (tools/assetgen). Replace with final art keeping this metadata format.",
+  "players": {
+    "warrior": {
+      "frameWidth": 48,
+      "frameHeight": 64,
+      "originX": 24,
+      "originY": 58,
+      "framesPerRowPerDirection": 6,
+      "directions": [
+        "up",
+        "up_right",
+        "right",
+        "down_right",
+        "down",
+        "down_left",
+        "left",
+        "up_left"
+      ],
+      "animations": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "fps": 6,
+          "loop": true
+        },
+        "walk": {
+          "row": 1,
+          "frames": 6,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "fps": 14,
+          "loop": false
+        },
+        "special": {
+          "row": 3,
+          "frames": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "dash": {
+          "row": 4,
+          "frames": 3,
+          "fps": 14,
+          "loop": false
+        },
+        "ability": {
+          "row": 5,
+          "frames": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "ultimate": {
+          "row": 6,
+          "frames": 4,
+          "fps": 10,
+          "loop": false
+        },
+        "hit": {
+          "row": 7,
+          "frames": 2,
+          "fps": 10,
+          "loop": false
+        },
+        "downed": {
+          "row": 8,
+          "frames": 2,
+          "fps": 3,
+          "loop": true
+        },
+        "revive": {
+          "row": 9,
+          "frames": 3,
+          "fps": 6,
+          "loop": false
+        }
+      }
+    }
+  },
+  "weapons": {
+    "frameWidth": 32,
+    "frameHeight": 32,
+    "gripX": 6,
+    "gripY": 16,
+    "order": [
+      "warrior_sword",
+      "warrior_axe",
+      "warrior_mace"
+    ]
+  },
+  "enemies": {
+    "forest_ghoul": {
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "originX": 16,
+      "originY": 29,
+      "walkFrames": 4,
+      "attackFrames": 2,
+      "faceRight": true
+    },
+    "forest_thorn_archer": {
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "originX": 16,
+      "originY": 29,
+      "walkFrames": 4,
+      "attackFrames": 2,
+      "faceRight": true
+    },
+    "forest_rot_shaman": {
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "originX": 16,
+      "originY": 29,
+      "walkFrames": 4,
+      "attackFrames": 2,
+      "faceRight": true
+    },
+    "forest_sprout": {
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "originX": 12,
+      "originY": 21,
+      "walkFrames": 4,
+      "attackFrames": 2,
+      "faceRight": true
+    }
+  },
+  "bosses": {
+    "forest_warden": {
+      "frameWidth": 96,
+      "frameHeight": 96,
+      "originX": 48,
+      "originY": 90,
+      "walkFrames": 4,
+      "attackFrames": 2,
+      "faceRight": true
+    }
+  },
+  "tiles": {
+    "forest": {
+      "tileSize": 16,
+      "order": [
+        "floor0",
+        "floor1",
+        "floor2",
+        "floor3",
+        "wall",
+        "obstacle",
+        "hazard",
+        "exit"
+      ]
+    }
+  },
+  "icons": {
+    "size": 48,
+    "order": [
+      "warrior_whirlwind",
+      "warrior_shield_charge",
+      "warrior_battle_cry",
+      "dash",
+      "potion",
+      "special"
+    ]
+  }
+}

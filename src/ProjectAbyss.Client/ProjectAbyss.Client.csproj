@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Presentation layer (rendering, HUD, menus, input mapping, sessions) written against the MonoGame API only.
+    This project exists to compile and review that code without a Stardew Valley installation: it references the
+    public MonoGame NuGet package. The SMAPI mod compiles the same source files against the game's own
+    MonoGame.Framework.dll instead (see ProjectAbyss.Smapi.csproj), so no MonoGame binaries are shipped.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>ProjectAbyss.Client</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectAbyss.Core\ProjectAbyss.Core.csproj" />
+  </ItemGroup>
+</Project>
