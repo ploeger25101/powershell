@@ -19,6 +19,10 @@ Mod bauen (nur mit installiertem Spiel; Pathoschild.Stardew.ModBuildConfig finde
 ```bash
 dotnet build src/ProjectAbyss.Smapi -c Release   # kopiert die Mod nach Stardew Valley/Mods/ProjectAbyss
 ```
+Nur das .NET SDK 6 vorhanden? Dann mit älterer ModBuildConfig bauen (deren Code-Analyse läuft mit dem Compiler des SDK 6):
+```bash
+dotnet build src/ProjectAbyss.Smapi -c Release /p:ModBuildConfigVersion=4.1.1
+```
 Assets neu erzeugen (Python 3 mit Pillow und NumPy, für Musik zusätzlich `oggenc`):
 ```bash
 python3 tools/assetgen/generate_test_assets.py

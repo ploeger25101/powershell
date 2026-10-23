@@ -11,9 +11,14 @@
     <RootNamespace>ProjectAbyss.Smapi</RootNamespace>
     <EnableHarmony>false</EnableHarmony>
     <ModFolderName>ProjectAbyss</ModFolderName>
+    <!--
+      ModBuildConfig 4.2.0+ ships an analyzer compiled against Roslyn 4.9 (needs .NET SDK 8). With only the .NET 6 SDK,
+      build with /p:ModBuildConfigVersion=4.1.1 (analyzer on Roslyn 3.10, same game references incl. StardewValley.GameData).
+    -->
+    <ModBuildConfigVersion Condition="'$(ModBuildConfigVersion)' == ''">4.4.0</ModBuildConfigVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.0" />
+    <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="$(ModBuildConfigVersion)" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectAbyss.Core\ProjectAbyss.Core.csproj" />
