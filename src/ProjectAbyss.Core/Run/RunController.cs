@@ -31,7 +31,7 @@ namespace ProjectAbyss.Core.Run
         private readonly LootGenerator loot;
         private DeterministicRng lootRng;
         private bool snapshotRequested;
-        private int lastSnapshotTick = int.MinValue;
+        private int lastSnapshotTick;
 
         public RunController(GameData data, RunState run, RunStore? store)
         {
@@ -105,6 +105,7 @@ namespace ProjectAbyss.Core.Run
         {
             this.World = new CombatWorld(this.data, world);
             this.Phase = RunPhase.InArena;
+            this.lastSnapshotTick = world.Tick;
             this.Log?.Invoke($"resumed arena at tick {world.Tick}");
         }
 
@@ -158,7 +159,7 @@ namespace ProjectAbyss.Core.Run
             this.World = new CombatWorld(this.data, WorldFactory.Create(this.data, setup));
             this.Phase = RunPhase.InArena;
             this.store?.SaveCheckpoint(run);
-            this.lastSnapshotTick = int.MinValue;
+            this.lastSnapshotTick = this.World.Tick;
             this.Log?.Invoke($"level {level} arena {setup.ArenaTemplateId} attempt {run.ArenaAttempt} ({setup.Encounter.Kind})");
             return this.World;
         }
